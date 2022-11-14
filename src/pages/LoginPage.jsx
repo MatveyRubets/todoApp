@@ -6,6 +6,9 @@ import axios from "axios";
 // axios.defaults.baseURL =
 // "http://dev.rapptrlabs.com/Tests/scripts/user-login.php";
 
+axios.defaults.headers.post["Content-Type"] =
+	"application/x-www-form-urlencoded";
+
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
@@ -21,9 +24,27 @@ const LoginPage = () => {
 		}
 	};
 
+	const creds = {
+		email: email,
+		password: password,
+	};
+
+	const config = {
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+	};
+
+	const url = "http://dev.rapptrlabs.com/Tests/scripts/user-login.php";
+
 	const handleSubmit = e => {
 		e.preventDefault();
-		axios.get("http://dev.rapptrlabs.com/Tests/scripts/user-login.php");
+
+		axios
+			.post(url, creds, config)
+			.then(res => console.log(res.data))
+			.catch(err => console.log(err));
+
 		setEmail("");
 		setPassword("");
 	};

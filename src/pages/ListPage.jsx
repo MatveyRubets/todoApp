@@ -31,6 +31,14 @@ const ListPage = () => {
 		setTodos(afterDeleteTodos);
 	};
 
+	const handleEditTodo = id => {
+		let afterEditTodo = [...todos].find(elem => {
+			return elem.id === id;
+		});
+
+		console.log(afterEditTodo);
+	};
+
 	return (
 		<div>
 			<h1 className=" text-center mb-5">My To-Do list</h1>
@@ -74,7 +82,13 @@ const ListPage = () => {
 					<div className=" mt-3 rounded">
 						{todos &&
 							todos.map(({ id, text }) => (
-								<TodoItem key={id} id={id} text={text} removeItem={handleDeleteTodo} />
+								<TodoItem
+									key={id}
+									id={id}
+									text={text}
+									removeItem={handleDeleteTodo}
+									editItem={handleEditTodo}
+								/>
 							))}
 					</div>
 				</>
