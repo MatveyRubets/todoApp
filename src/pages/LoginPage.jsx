@@ -23,6 +23,7 @@ const LoginPage = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		axios.get("http://dev.rapptrlabs.com/Tests/scripts/user-login.php");
 		setEmail("");
 		setPassword("");
 	};

@@ -1,10 +1,35 @@
 import React, { useState } from "react";
-import Todo from "../components/Todo";
 import { BsSearch } from "react-icons/bs";
+import TodoItem from "../components/TodoItem";
+import { nanoid } from "nanoid";
 
 const ListPage = () => {
 	const [isVisible, setIsVisible] = useState(false);
-	const [toDo, setToDo] = useState("");
+
+	const [todos, setTodos] = useState([]);
+	const [todo, setTodo] = useState("");
+
+	const handleChange = e => {
+		setTodo(e.target.value);
+	};
+
+	const handleSubmit = e => {
+		e.preventDefault();
+
+		const newTodo = {
+			id: nanoid(),
+			text: todo.trim(),
+		};
+
+		newTodo.text && setTodos([...todos, newTodo]);
+		setTodo("");
+	};
+
+	const handleDeleteTodo = id => {
+		const afterDeleteTodos = [...todos].filter(todo => todo.id !== id);
+
+		setTodos(afterDeleteTodos);
+	};
 
 	return (
 		<div>
@@ -27,7 +52,32 @@ const ListPage = () => {
 						New
 					</button>
 				</div>
-				<div>{isVisible ? <Todo /> : null}</div>
+				<>
+					{isVisible ? (
+						<form
+							onSubmit={handleSubmit}
+							className="flex justify-between w-full my-2 p-2 items-center"
+						>
+							<input
+								type="text"
+								className="border-solid border-2 rounded pl-2 py-1 italic"
+								placeholder="Dogwalk..."
+								onChange={handleChange}
+								value={todo}
+							/>
+							<button className="text-white py-1 bg-slate-900" type="submit">
+								Save
+							</button>
+						</form>
+					) : null}
+
+					<div className=" mt-3 rounded">
+						{todos &&
+							todos.map(({ id, text }) => (
+								<TodoItem key={id} id={id} text={text} removeItem={handleDeleteTodo} />
+							))}
+					</div>
+				</>
 			</div>
 		</div>
 	);
