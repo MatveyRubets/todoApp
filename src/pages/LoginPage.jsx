@@ -2,12 +2,14 @@ import React from "react";
 import { useState } from "react";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
 	const handleChange = ({ target: { name, value } }) => {
 		switch (name) {
@@ -38,7 +40,7 @@ const LoginPage = () => {
 		setIsLoading(true);
 		axios
 			.post(url, data, config)
-			.then(res => console.log(res.data))
+			.then(navigate("/list"))
 			.catch(err => setError(err))
 			.finally(() => setIsLoading(false));
 		setEmail("");
