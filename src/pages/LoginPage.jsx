@@ -40,7 +40,7 @@ const LoginPage = () => {
 		setIsLoading(true);
 		axios
 			.post(url, data, config)
-			.then(navigate("/list"))
+			.then(({ status }) => (status === 200 ? navigate("/list") : status))
 			.catch(err => setError(err))
 			.finally(() => setIsLoading(false));
 		setEmail("");

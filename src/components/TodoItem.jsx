@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BsPen, BsTrash } from "react-icons/bs";
 
 const TodoItem = ({ id, text, removeItem, editItem }) => {

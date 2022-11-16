@@ -1,13 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { BsSearch } from "react-icons/bs";
 import TodoItem from "../components/TodoItem";
 import { nanoid } from "nanoid";
 
 const ListPage = () => {
-	const [isVisible, setIsVisible] = useState(false);
+	const getLocalTodos = () => {
+		let list = localStorage.getItem("todos");
 
-	const [todos, setTodos] = useState([]);
+		if (list) {
+			return JSON.parse(localStorage.getItem("todos"));
+		} else {
+			return [];
+		}
+	};
+
+	const [isVisible, setIsVisible] = useState(false);
+	const [todos, setTodos] = useState(getLocalTodos());
 	const [todo, setTodo] = useState("");
+	const [toggleEdit, setToggleEdit] = useState(false);
+	const [filter, setFilter] = useState("");
+	const [isEdit, setIsEdit] = useState(null);
 
 	const handleChange = e => {
 		setTodo(e.target.value);
@@ -20,9 +32,23 @@ const ListPage = () => {
 			id: nanoid(),
 			text: todo.trim(),
 		};
+		if (!newTodo.text) {
+			alert("Please add some text");
+			return;
+		} else if (todo && toggleEdit) {
+			let editedItem = todos.map(elem =>
+				elem.id === isEdit ? { ...elem, text: todo } : elem
+			);
 
-		newTodo.text && setTodos([...todos, newTodo]);
-		setTodo("");
+			setTodos(editedItem);
+			setIsVisible(false);
+			setTodo("");
+			setToggleEdit(false);
+		} else {
+			setTodos([...todos, newTodo]);
+			setIsVisible(false);
+			setTodo("");
+		}
 	};
 
 	const handleDeleteTodo = id => {
@@ -32,12 +58,29 @@ const ListPage = () => {
 	};
 
 	const handleEditTodo = id => {
-		let afterEditTodo = [...todos].find(elem => {
-			return elem.id === id;
-		});
+		let newEditItem = todos.find(todo => todo.id === id);
 
-		console.log(afterEditTodo);
+		setToggleEdit(true);
+		setIsVisible(true);
+		setTodo(newEditItem.text);
+		setIsEdit(id);
 	};
+
+	const getVisibleTodos = () => {
+		const normalizedFilter = filter.toLowerCase();
+
+		return todos.filter(todo =>
+			todo.text.toLowerCase().includes(normalizedFilter)
+		);
+	};
+
+	const searchFilter = e => {
+		setFilter(e.target.value);
+	};
+
+	useEffect(() => {
+		localStorage.setItem("todos", JSON.stringify(todos));
+	}, [todos]);
 
 	return (
 		<div>
@@ -51,6 +94,8 @@ const ListPage = () => {
 						minLength="1"
 						maxLength="25"
 						placeholder="Search"
+						onChange={searchFilter}
+						value={filter}
 					/>
 					<button
 						onClick={() => setIsVisible(!isVisible)}
@@ -73,15 +118,21 @@ const ListPage = () => {
 								onChange={handleChange}
 								value={todo}
 							/>
-							<button className="text-white py-1 bg-slate-900" type="submit">
-								Save
-							</button>
+							{toggleEdit ? (
+								<button className="text-white py-1 bg-slate-900" type="submit">
+									Change
+								</button>
+							) : (
+								<button className="text-white py-1 bg-slate-900" type="submit">
+									Save
+								</button>
+							)}
 						</form>
 					) : null}
 
 					<div className=" mt-3 rounded">
-						{todos &&
-							todos.map(({ id, text }) => (
+						{getVisibleTodos() &&
+							getVisibleTodos().map(({ id, text }) => (
 								<TodoItem
 									key={id}
 									id={id}
