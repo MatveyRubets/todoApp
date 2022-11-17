@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { BsSearch } from "react-icons/bs";
+import Filter from "../components/FIlter";
 import TodoItem from "../components/TodoItem";
 import { nanoid } from "nanoid";
+import { Link } from "react-router-dom";
+import { BsSearch } from "react-icons/bs";
 
 const ListPage = () => {
 	const getLocalTodos = () => {
@@ -82,21 +84,21 @@ const ListPage = () => {
 		localStorage.setItem("todos", JSON.stringify(todos));
 	}, [todos]);
 
+	const visibleTodos = getVisibleTodos();
+
 	return (
 		<div>
+			<Link
+				className="absolute top-2 right-2 p-3 rounded bg-red-400 text-white"
+				to="/login"
+			>
+				Log out
+			</Link>
 			<h1 className=" text-center mb-5">My To-Do list</h1>
 			<div className=" border-2 border-neutral-400 rounded p-5">
 				<div className="header relative flex items-center">
 					<BsSearch className="w-5 h-5 absolute ml-2 pointer-events-none" />
-					<input
-						className="border-solid border-2 rounded pr-3 pl-8 py-2 mr-3"
-						type="text"
-						minLength="1"
-						maxLength="25"
-						placeholder="Search"
-						onChange={searchFilter}
-						value={filter}
-					/>
+					<Filter searchFilter={searchFilter} filter={filter} />
 					<button
 						onClick={() => setIsVisible(!isVisible)}
 						className="w-full rounded bg-blue-400 text-white"
@@ -131,8 +133,8 @@ const ListPage = () => {
 					) : null}
 
 					<div className=" mt-3 rounded">
-						{getVisibleTodos() &&
-							getVisibleTodos().map(({ id, text }) => (
+						{visibleTodos &&
+							visibleTodos.map(({ id, text }) => (
 								<TodoItem
 									key={id}
 									id={id}
