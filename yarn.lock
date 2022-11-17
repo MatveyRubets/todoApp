@@ -275,15 +275,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.9.2":
-  version: 7.20.1
-  resolution: "@babel/runtime@npm:7.20.1"
-  dependencies:
-    regenerator-runtime: ^0.13.10
-  checksum: 00567a333d3357925742a6f5e39394dcc0af6e6029103fe188158bf7ae8b0b3ee3c6c0f68fccc217f0a6cfa455f6be252298baf56b3f5ff37b34313b170cd9f6
-  languageName: node
-  linkType: hard
-
 "@babel/template@npm:^7.18.10":
   version: 7.18.10
   resolution: "@babel/template@npm:7.18.10"
@@ -444,56 +435,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@reduxjs/toolkit@npm:^1.9.0":
-  version: 1.9.0
-  resolution: "@reduxjs/toolkit@npm:1.9.0"
-  dependencies:
-    immer: ^9.0.16
-    redux: ^4.2.0
-    redux-thunk: ^2.4.2
-    reselect: ^4.1.7
-  peerDependencies:
-    react: ^16.9.0 || ^17.0.0 || ^18
-    react-redux: ^7.2.1 || ^8.0.2
-  peerDependenciesMeta:
-    react:
-      optional: true
-    react-redux:
-      optional: true
-  checksum: 34452bc5d41ae401f6673ae418afface339a3cf5990dfac2f784295cebcecabf83aade228671fc03d4c450b752334822d9504164862039be3945527bc94981bc
-  languageName: node
-  linkType: hard
-
 "@remix-run/router@npm:1.0.3":
   version: 1.0.3
   resolution: "@remix-run/router@npm:1.0.3"
   checksum: 7e535f3c24bf6b0a48aff3de70ee74e5402fe93105aa9bd01f275d5d8f5a9a8a7cadec08d18cf5544d4f24bc9d7a091abc1c9d4ea8efb2893e9077f104a51459
-  languageName: node
-  linkType: hard
-
-"@tanstack/query-core@npm:4.15.1":
-  version: 4.15.1
-  resolution: "@tanstack/query-core@npm:4.15.1"
-  checksum: ee98e75a3770fd35a6a10b9e7b3c417ea9da2b072481b5191d759182b29fd7bc4e8e340f83e2961b46fe4e1adac356087df04d4661c9459d09ff4d0574f683eb
-  languageName: node
-  linkType: hard
-
-"@tanstack/react-query@npm:^4.15.1":
-  version: 4.15.1
-  resolution: "@tanstack/react-query@npm:4.15.1"
-  dependencies:
-    "@tanstack/query-core": 4.15.1
-    use-sync-external-store: ^1.2.0
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0
-    react-native: "*"
-  peerDependenciesMeta:
-    react-dom:
-      optional: true
-    react-native:
-      optional: true
-  checksum: 5f9ff05c5c1400e95c38766248d92b8047d6dd2c734c8b24ee038ea466cddeeb1acb58f85a585726cb78a72d4d263fc87d4c21f21751f3ffb212de37facf9625
   languageName: node
   linkType: hard
 
@@ -1510,13 +1455,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"immer@npm:^9.0.16":
-  version: 9.0.16
-  resolution: "immer@npm:9.0.16"
-  checksum: e9a5ca65c929b329da7a3b7beccf7984271cda7bdd47b2cab619eac3277dcd56598c211b55cc340786b6eff0c06652ac018808d9fd744443f06882364dece6bc
-  languageName: node
-  linkType: hard
-
 "imurmurhash@npm:^0.1.4":
   version: 0.1.4
   resolution: "imurmurhash@npm:0.1.4"
@@ -2147,15 +2085,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-hook-form@npm:^7.39.3":
-  version: 7.39.3
-  resolution: "react-hook-form@npm:7.39.3"
-  peerDependencies:
-    react: ^16.8.0 || ^17 || ^18
-  checksum: 80dc880116af3455a1dcaddaa34b0a5bf1be8177deee180dfbd75e663458c1183625820a9292dcdbad9e5016daf94ee94e222fbe36a45d9455649d509936dd2c
-  languageName: node
-  linkType: hard
-
 "react-icons@npm:^4.6.0":
   version: 4.6.0
   resolution: "react-icons@npm:4.6.0"
@@ -2231,38 +2160,6 @@ __metadata:
   dependencies:
     picomatch: ^2.2.1
   checksum: 1ced032e6e45670b6d7352d71d21ce7edf7b9b928494dcaba6f11fba63180d9da6cd7061ebc34175ffda6ff529f481818c962952004d273178acd70f7059b320
-  languageName: node
-  linkType: hard
-
-"redux-thunk@npm:^2.4.2":
-  version: 2.4.2
-  resolution: "redux-thunk@npm:2.4.2"
-  peerDependencies:
-    redux: ^4
-  checksum: c7f757f6c383b8ec26152c113e20087818d18ed3edf438aaad43539e9a6b77b427ade755c9595c4a163b6ad3063adf3497e5fe6a36c68884eb1f1cfb6f049a5c
-  languageName: node
-  linkType: hard
-
-"redux@npm:^4.2.0":
-  version: 4.2.0
-  resolution: "redux@npm:4.2.0"
-  dependencies:
-    "@babel/runtime": ^7.9.2
-  checksum: 75f3955c89b3f18edf5411e5fb482aa2e4f41a416183e8802a6bf6472c4fc3d47675b8b321d147f8af8e0f616436ac507bf5a25f1c4d6180e797b549c7db2c1d
-  languageName: node
-  linkType: hard
-
-"regenerator-runtime@npm:^0.13.10":
-  version: 0.13.10
-  resolution: "regenerator-runtime@npm:0.13.10"
-  checksum: 09893f5a9e82932642d9a999716b6c626dc53ef2a01307c952ebbf8e011802360163a37c304c18a6c358548be5a72b448e37209954a18696f21e438c81cbb4b9
-  languageName: node
-  linkType: hard
-
-"reselect@npm:^4.1.7":
-  version: 4.1.7
-  resolution: "reselect@npm:4.1.7"
-  checksum: 738d8e2b8f0dca154ad29de6a209c9fbca2d70ae6788fd85df87f2c74b95a65bbf2d16d43a9e2faff39de34d17a29d706ba08a6b2ee5660c09589edbd19af7e1
   languageName: node
   linkType: hard
 
@@ -2591,15 +2488,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"use-sync-external-store@npm:^1.2.0":
-  version: 1.2.0
-  resolution: "use-sync-external-store@npm:1.2.0"
-  peerDependencies:
-    react: ^16.8.0 || ^17.0.0 || ^18.0.0
-  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
-  languageName: node
-  linkType: hard
-
 "util-deprecate@npm:^1.0.1, util-deprecate@npm:^1.0.2":
   version: 1.0.2
   resolution: "util-deprecate@npm:1.0.2"
@@ -2611,8 +2499,6 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "vite-project@workspace:."
   dependencies:
-    "@reduxjs/toolkit": ^1.9.0
-    "@tanstack/react-query": ^4.15.1
     "@types/react": ^18.0.24
     "@types/react-dom": ^18.0.8
     "@vitejs/plugin-react": ^2.2.0
@@ -2622,7 +2508,6 @@ __metadata:
     postcss: ^8.4.19
     react: ^18.2.0
     react-dom: ^18.2.0
-    react-hook-form: ^7.39.3
     react-icons: ^4.6.0
     react-router-dom: ^6.4.3
     tailwindcss: ^3.2.4

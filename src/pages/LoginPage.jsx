@@ -3,6 +3,8 @@ import { useState } from "react";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import Title from "../components/Title";
+import AuthError from "../components/AuthError";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
@@ -49,7 +51,7 @@ const LoginPage = () => {
 
 	return (
 		<div>
-			<h1 className="mb-5">Rapptr Labs</h1>
+			<Title title="Rapptr Labs" />
 			<form onSubmit={handleSubmit}>
 				<p>Email</p>
 				<label className="relative flex items-center text-gray-400 mb-3 ">
@@ -86,9 +88,8 @@ const LoginPage = () => {
 				>
 					{isLoading ? "Loading..." : "Login"}
 				</button>
-				<p className=" text-center py-1 w-72 mx-auto text-sm text-red-600">
-					{error && "The server could not be reached please try again later"}
-				</p>
+
+				{error && <AuthError />}
 			</form>
 		</div>
 	);

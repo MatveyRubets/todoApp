@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+#root {
+	max-width: 1280px;
+	margin: 0 auto;
+	padding: 2rem;
+}
+
 :root {
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: 16px;

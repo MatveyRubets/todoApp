@@ -1,21 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Filter from "../components/FIlter";
+import Filter from "../components/Filter";
+import LogOut from "../components/LogOut";
 import TodoItem from "../components/TodoItem";
+import Title from "../components/Title";
 import { nanoid } from "nanoid";
-import { Link } from "react-router-dom";
 import { BsSearch } from "react-icons/bs";
+import { getLocalTodos } from "../helpers/getLocalTodos";
 
 const ListPage = () => {
-	const getLocalTodos = () => {
-		let list = localStorage.getItem("todos");
-
-		if (list) {
-			return JSON.parse(localStorage.getItem("todos"));
-		} else {
-			return [];
-		}
-	};
-
 	const [isVisible, setIsVisible] = useState(false);
 	const [todos, setTodos] = useState(getLocalTodos());
 	const [todo, setTodo] = useState("");
@@ -88,13 +80,8 @@ const ListPage = () => {
 
 	return (
 		<div>
-			<Link
-				className="absolute top-2 right-2 p-3 rounded bg-red-400 text-white"
-				to="/login"
-			>
-				Log out
-			</Link>
-			<h1 className=" text-center mb-5">My To-Do list</h1>
+			<LogOut />
+			<Title title="My To-Do list" />
 			<div className=" border-2 border-neutral-400 rounded p-5">
 				<div className="header relative flex items-center">
 					<BsSearch className="w-5 h-5 absolute ml-2 pointer-events-none" />
