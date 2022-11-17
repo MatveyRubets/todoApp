@@ -107,15 +107,9 @@ const ListPage = () => {
 								onChange={handleChange}
 								value={todo}
 							/>
-							{toggleEdit ? (
-								<button className="text-white py-1 bg-slate-900" type="submit">
-									Change
-								</button>
-							) : (
-								<button className="text-white py-1 bg-slate-900" type="submit">
-									Save
-								</button>
-							)}
+							<button className="text-white py-1 bg-slate-900" type="submit">
+								{toggleEdit ? "Change" : "Save"}
+							</button>
 						</form>
 					) : null}
 
